@@ -94,13 +94,20 @@ if __name__ == "__main__":
     parser = get_parser('klines')
     args = parser.parse_args(sys.argv[1:])
 
-    if not args.symbols:
+
+    """ 
+      if not args.symbols:
       print("fetching all symbols from exchange")
       symbols = get_all_symbols(args.type)
       num_symbols = len(symbols)
     else:
       symbols = args.symbols
       num_symbols = len(symbols)
+    """
+    
+     """ 如果你只需要下载指定的内容，则不需要全部下载，在这里写上你需要的交易对即可。  """ 
+    symbols = {"ETHUSDT","BTCUSDT"}
+    num_symbols = len(symbols)
 
     if args.dates:
       dates = args.dates
@@ -110,3 +117,4 @@ if __name__ == "__main__":
       download_monthly_klines(args.type, symbols, num_symbols, args.intervals, args.years, args.months, args.startDate, args.endDate, args.folder, args.checksum)
     download_daily_klines(args.type, symbols, num_symbols, args.intervals, dates, args.startDate, args.endDate, args.folder, args.checksum)
 
+    print(" done ")
